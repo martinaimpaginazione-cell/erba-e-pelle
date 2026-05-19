@@ -1,13 +1,13 @@
 /* Design tokens — erboristeria / cosmetica naturale */
 :root {
-	--color-bg: #f7f4ef;
+	--color-bg: #f1f6f2;
 	--color-surface: #ffffff;
-	--color-text: #2c2a26;
-	--color-text-muted: #5c574e;
-	--color-accent: #3d5c4a;
-	--color-accent-hover: #2f4839;
-	--color-border: #e2dcd2;
-	--color-highlight: #e8efe8;
+	--color-text: #1f2e24;
+	--color-text-muted: #4a5f52;
+	--color-accent: #2d6a4f;
+	--color-accent-hover: #1b4332;
+	--color-border: #c5d9cc;
+	--color-highlight: #d8ede0;
 	--radius: 12px;
 	--shadow: 0 1px 3px rgb(44 42 38 / 8%), 0 8px 24px rgb(44 42 38 / 6%);
 	--space-xs: 0.35rem;

@@ -4,6 +4,24 @@
 	import { products } from '$lib/data/products';
 
 	const inEvidenza = products.slice(0, 3);
+
+	const wildPlants = [
+		{
+			src: '/images/wild-herbs.jpg',
+			alt: 'Erbe selvatiche raccolte in prato',
+			caption: 'Erbe di campo'
+		},
+		{
+			src: '/images/wild-flowers.jpg',
+			alt: 'Fiori selvatici in un prato fiorito',
+			caption: 'Fioriture spontanee'
+		},
+		{
+			src: '/images/forest-plants.jpg',
+			alt: 'Vegetazione rigogliosa in un bosco',
+			caption: 'Piante del sottobosco'
+		}
+	] as const;
 </script>
 
 <svelte:head>
@@ -11,16 +29,47 @@
 </svelte:head>
 
 <section class="hero">
-	<p class="eyebrow">Erboristeria · cosmetica vegetale</p>
-	<h1>Cura della pelle con ciò che cresce in natura</h1>
-	<p class="lead">
-		Formulazioni semplici, ingredienti di origine vegetale e consigli chiari. Niente promesse
-		impossibili: solo qualità e rispetto per la pelle.
-	</p>
-	<p class="actions">
-		<a class="btn btn-primary" href={resolve('/prodotti')}>Vedi i prodotti</a>
-		<a class="btn btn-ghost" href={resolve('/chi-siamo')}>La nostra filosofia</a>
-	</p>
+	<div class="hero-content">
+		<p class="eyebrow">Erboristeria · cosmetica vegetale</p>
+		<h1>Cura della pelle con ciò che cresce in natura</h1>
+		<p class="lead">
+			Formulazioni semplici, ingredienti di origine vegetale e consigli chiari. Niente promesse
+			impossibili: solo qualità e rispetto per la pelle.
+		</p>
+		<p class="actions">
+			<a class="btn btn-primary" href={resolve('/prodotti')}>Vedi i prodotti</a>
+			<a class="btn btn-ghost" href={resolve('/chi-siamo')}>La nostra filosofia</a>
+		</p>
+	</div>
+	<figure class="hero-visual">
+		<img
+			src="/images/hero-wild-meadow.jpg"
+			alt="Prato verde con piante selvatiche e luce naturale"
+			width="1400"
+			height="900"
+			fetchpriority="high"
+		/>
+	</figure>
+</section>
+
+<section class="nature" aria-labelledby="nature-title">
+	<div class="nature-intro">
+		<h2 id="nature-title">Dalla natura selvatica</h2>
+		<p>
+			Ci ispiriamo a ciò che cresce spontaneo: erbe di prato, fioriture di stagione e il verde del
+			sottobosco. Materie prime scelte con rispetto per l&apos;ambiente e per la pelle.
+		</p>
+	</div>
+	<ul class="nature-grid">
+		{#each wildPlants as plant (plant.src)}
+			<li>
+				<figure class="plant-card">
+					<img src={plant.src} alt={plant.alt} width="800" height="600" loading="lazy" />
+					<figcaption>{plant.caption}</figcaption>
+				</figure>
+			</li>
+		{/each}
+	</ul>
 </section>
 
 <section class="band" aria-labelledby="valori-title">
@@ -55,8 +104,38 @@
 
 <style>
 	.hero {
-		max-width: 38rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-lg);
 		margin-bottom: var(--space-xl);
+		align-items: center;
+	}
+
+	@media (min-width: 52rem) {
+		.hero {
+			grid-template-columns: 1fr 1.1fr;
+			gap: var(--space-xl);
+		}
+	}
+
+	.hero-content {
+		max-width: 38rem;
+	}
+
+	.hero-visual {
+		margin: 0;
+		border-radius: var(--radius);
+		overflow: hidden;
+		box-shadow: var(--shadow);
+		border: 1px solid var(--color-border);
+	}
+
+	.hero-visual img {
+		width: 100%;
+		height: 100%;
+		min-height: 16rem;
+		object-fit: cover;
+		aspect-ratio: 4 / 3;
 	}
 
 	.eyebrow {
@@ -118,6 +197,59 @@
 
 	.btn-ghost:hover {
 		border-color: var(--color-accent);
+		background: var(--color-highlight);
+	}
+
+	.nature {
+		margin-bottom: var(--space-xl);
+	}
+
+	.nature-intro {
+		max-width: 42rem;
+		margin-bottom: var(--space-lg);
+	}
+
+	.nature-intro h2 {
+		margin: 0 0 var(--space-sm);
+		font-size: 1.5rem;
+		color: var(--color-accent);
+	}
+
+	.nature-intro p {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: 1.05rem;
+	}
+
+	.nature-grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+		gap: var(--space-md);
+	}
+
+	.plant-card {
+		margin: 0;
+		border-radius: var(--radius);
+		overflow: hidden;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow);
+	}
+
+	.plant-card img {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+
+	.plant-card figcaption {
+		padding: var(--space-sm) var(--space-md);
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--color-accent);
 		background: var(--color-highlight);
 	}
 
