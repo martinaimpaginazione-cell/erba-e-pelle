@@ -39,4 +39,25 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Pubblicazione su GitHub Pages
+
+Il sito è statico (`@sveltejs/adapter-static`, prerender su tutte le pagine) e viene pubblicato con GitHub Actions (`.github/workflows/deploy.yml`).
+
+### Primo deploy
+
+1. Crea un repository su GitHub e pusha il codice sul branch `main`.
+2. Su GitHub: **Settings → Pages → Build and deployment → Source** → seleziona **GitHub Actions**.
+3. Fai push su `main` (o avvia manualmente il workflow da **Actions**).
+
+L’URL sarà `https://<utente>.github.io/<nome-repo>/` (es. `https://tuousername.github.io/erba-e-pelle/`).
+
+### Dominio personalizzato
+
+Se usi un dominio proprio (es. `www.erbaepelle.it`), imposta `BASE_PATH` vuoto nel workflow e configura il dominio in **Settings → Pages**.
+
+### Anteprima locale con base path GitHub Pages
+
+```sh
+# PowerShell
+$env:BASE_PATH='/erba-e-pelle/'; npm run build; npm run preview
+```
