@@ -59,5 +59,5 @@ Se usi un dominio proprio (es. `www.erbaepelle.it`), imposta `BASE_PATH` vuoto n
 
 ```sh
 # PowerShell
-$env:BASE_PATH='/erba-e-pelle/'; npm run build; npm run preview
+$env:BASE_PATH='/erba-e-pelle'; npm run build; npm run preview
 ```

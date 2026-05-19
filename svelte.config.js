@@ -1,7 +1,8 @@
 import adapter from '@sveltejs/adapter-static';
 
-/** Base path per GitHub Pages (es. `/erba-e-pelle/`). Vuoto in sviluppo locale. */
-const base = process.env.BASE_PATH ?? '';
+/** Base path per GitHub Pages (es. `/erba-e-pelle`). Vuoto in sviluppo locale. */
+const rawBase = process.env.BASE_PATH ?? '';
+const base = rawBase === '/' ? '' : rawBase.replace(/\/$/, '');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

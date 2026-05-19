@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { base, resolve } from '$app/paths';
 	import ProductCard from '$lib/components/ProductCard.svelte';
 	import { products } from '$lib/data/products';
 
@@ -7,17 +7,17 @@
 
 	const wildPlants = [
 		{
-			src: '/images/wild-herbs.jpg',
+			src: `${base}/images/wild-herbs.jpg`,
 			alt: 'Erbe selvatiche raccolte in prato',
 			caption: 'Erbe di campo'
 		},
 		{
-			src: '/images/wild-flowers.jpg',
+			src: `${base}/images/wild-flowers.jpg`,
 			alt: 'Fiori selvatici in un prato fiorito',
 			caption: 'Fioriture spontanee'
 		},
 		{
-			src: '/images/forest-plants.jpg',
+			src: `${base}/images/forest-plants.jpg`,
 			alt: 'Vegetazione rigogliosa in un bosco',
 			caption: 'Piante del sottobosco'
 		}
@@ -43,7 +43,7 @@
 	</div>
 	<figure class="hero-visual">
 		<img
-			src="/images/hero-wild-meadow.jpg"
+			src={`${base}/images/hero-wild-meadow.jpg`}
 			alt="Prato verde con piante selvatiche e luce naturale"
 			width="1400"
 			height="900"
